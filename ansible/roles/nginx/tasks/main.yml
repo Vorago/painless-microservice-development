@@ -1,0 +1,49 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Configure sites
+  template:
+    src: site.j2
+    dest: /etc/nginx/sites-enabled/site
+
+- name: Remove default site
+  file:
+    state: absent
+    path: /etc/nginx/sites-enabled/default
+
+- name: Create services and skel folders
+  file:
+    path: /etc/nginx/services/skel
+    state: directory
+
+- name: Populate skel directory
+  template:
+    src: "{{ item }}.j2"
+    dest: /etc/nginx/services/skel/{{ item }}.conf
+  with_items:
+    - a.vagrant
+    - a.host
+    - b.vagrant
+    - b.host
+    - frontend.host
+    - frontend.vagrant
+
+- name: Default configuration for services
+  file:
+    src: /etc/nginx/services/skel/{{ item.name }}.{{ item.type }}.conf
+    dest: /etc/nginx/services/{{ item.name }}.conf
+    state: link
+  with_items:
+    - "{{ services.a }}"
+    - "{{ services.b }}"
+    - "{{ services.frontend }}"
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: started

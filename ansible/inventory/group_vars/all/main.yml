@@ -1,0 +1,22 @@
+---
+
+service_host_ip: 10.0.2.2
+external_port: 80
+external_port_inner: 80
+service_a_port: 8081
+service_b_port: 8082
+
+# type can be vagrant or host
+services:
+  a:
+    name: a
+    type: vagrant
+    port: 8081
+  b:
+    name: b
+    type: vagrant
+    port: 8082
+  frontend:
+    name: frontend
+    type: vagrant
+    port: 9000

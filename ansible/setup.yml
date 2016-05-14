@@ -1,0 +1,6 @@
+---
+- hosts: vagrant
+  become: true
+  become_user: root
+  roles:
+  - nginx
