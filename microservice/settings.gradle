@@ -1,5 +1,4 @@
-rootProject.name = 'microservices'
-
 include 'service-a'
 include 'service-b'
+include 'service-a-mock'
 include 'frontend'

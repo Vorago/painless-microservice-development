@@ -3,4 +3,10 @@
   become: true
   become_user: root
   roles:
+  - java
   - nginx
+  - gradle
+  - daemon
+  - { role: service-setup, item: "service-a" }
+  - { role: service-setup, item: "service-b" }
+  - { role: service-setup, item: "service-a-mock" }

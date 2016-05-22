@@ -6,6 +6,6 @@ import static spark.Spark.port;
 public class Main {
     public static void main(String[] args) {
         port(8081);
-        get("/hello", (req, res) -> "Service A");
+        get("/", (req, res) -> "Service A");
     }
 }

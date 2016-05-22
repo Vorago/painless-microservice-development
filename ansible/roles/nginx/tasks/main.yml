@@ -30,8 +30,6 @@
     - a.host
     - b.vagrant
     - b.host
-    - frontend.host
-    - frontend.vagrant
 
 - name: Default configuration for services
   file:
@@ -41,9 +39,9 @@
   with_items:
     - "{{ services.a }}"
     - "{{ services.b }}"
-    - "{{ services.frontend }}"
 
 - name: Restart nginx
   service:
     name: nginx
+    enabled: yes
     state: started

@@ -1,0 +1,7 @@
+---
+- hosts: vagrant
+  become: true
+  become_user: root
+  roles:
+  - { role: service-stop, item: "service-a" }
+  - { role: service-stop, item: "service-b" }

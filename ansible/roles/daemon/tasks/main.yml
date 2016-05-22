@@ -1,0 +1,5 @@
+---
+- name: Install daemon
+  apt:
+    name: daemon
+    state: present

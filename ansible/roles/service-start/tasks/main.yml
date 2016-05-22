@@ -1,0 +1,6 @@
+---
+- name: Run service
+  command: "daemon -n {{ item }} -- java -jar ~/bin/{{ item }}.jar"
+
+
+

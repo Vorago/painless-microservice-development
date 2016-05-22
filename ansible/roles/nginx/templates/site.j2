@@ -1,11 +1,3 @@
-upstream service-a {
-	server {{ service_host_ip }}:{{ service_a_port }};
-}
-
-upstream service-b {
-	server {{ service_host_ip }}:{{ service_b_port }};
-}
-
 server {
 	listen {{ external_port_inner }} default_server;
 	listen [::]:{{ external_port_inner }} default_server ipv6only=on;

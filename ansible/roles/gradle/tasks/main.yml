@@ -1,0 +1,8 @@
+---
+- name: Make gradlew executable
+  file:
+    path: "{{ code_path }}/gradlew"
+    mode: o+x
+
+- name: Compile services
+  command: "{{ code_path }}/gradlew -p {{ code_path }} shadowJar"

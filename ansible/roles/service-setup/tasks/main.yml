@@ -1,0 +1,9 @@
+---
+- name: Ensure binary path
+  file:
+    path: "~/bin"
+    state: directory
+
+- name: Move binary
+  command: "cp {{ code_path }}/{{ item }}/build/libs/{{ item }}-all.jar ~/bin/{{ item }}.jar"
+
